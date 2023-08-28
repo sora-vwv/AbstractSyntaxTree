@@ -1,7 +1,7 @@
 package ast.bitwise.binary;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import ast.Position;
 import ast.bitwise.BitwiseBinary;
@@ -18,7 +18,7 @@ import static org.objectweb.asm.Opcodes.LSHL;
 
 public class LShift extends BitwiseBinary {
 
-    public LShift(GetDataAst left, GetDataAst right, Position position) throws AstException {
+    public LShift(GetData left, GetData right, Position position) throws AstException {
         super(left, right, position);
     }
 

@@ -2,7 +2,7 @@ package ast.logic;
 
 import ast.AstException;
 import ast.Position;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import org.objectweb.asm.MethodVisitor;
 
@@ -12,11 +12,11 @@ import org.objectweb.asm.MethodVisitor;
 
  */
 
-public class LogicUnary extends Position implements GetDataAst {
+public class LogicUnary extends Position implements GetData {
 
-    private final GetDataAst value;
+    private final GetData value;
 
-    protected LogicUnary(GetDataAst value, Position position) {
+    protected LogicUnary(GetData value, Position position) {
         super(position);
         this.value = value;
     }

@@ -1,7 +1,7 @@
 package ast.cast;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
@@ -14,12 +14,12 @@ import static org.objectweb.asm.Opcodes.INSTANCEOF;
 
  */
 
-public class InstanceOf extends Position implements GetDataAst {
+public class InstanceOf extends Position implements GetData {
 
-    private final GetDataAst left;
+    private final GetData left;
     private final JVM right;
 
-    public InstanceOf(GetDataAst left, JVM right, Position position) throws AstException {
+    public InstanceOf(GetData left, JVM right, Position position) throws AstException {
         super(position);
 
         this.left = left;

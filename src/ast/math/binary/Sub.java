@@ -1,7 +1,7 @@
 package ast.math.binary;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.Position;
 import ast.math.MathBinary;
 import org.objectweb.asm.MethodVisitor;
@@ -17,7 +17,7 @@ import static org.objectweb.asm.Opcodes.*;
 public class Sub extends MathBinary {
 
     // конструктор должен быть публичным
-    public Sub(GetDataAst left, GetDataAst right, Position position) throws AstException {
+    public Sub(GetData left, GetData right, Position position) throws AstException {
         super(left, right, position);
     }
 

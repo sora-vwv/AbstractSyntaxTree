@@ -1,7 +1,7 @@
 package ast.logic.unary;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.Position;
 import ast.logic.LogicUnary;
 import org.objectweb.asm.Label;
@@ -17,7 +17,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Not extends LogicUnary {
 
-    public Not(GetDataAst value, Position position) throws AstException {
+    public Not(GetData value, Position position) throws AstException {
         super(value, position);
         if (!value.getType().isBoolean())
             throw new AstException("Оператор not работает только с boolean", this);

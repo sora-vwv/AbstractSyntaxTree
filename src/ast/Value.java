@@ -11,7 +11,7 @@ import static org.objectweb.asm.Opcodes.*;
 
  */
 
-public class Value implements GetDataAst {
+public class Value implements GetData {
 
     private boolean value_boolean;
     private int     value_int;

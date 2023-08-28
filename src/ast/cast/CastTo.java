@@ -1,7 +1,7 @@
 package ast.cast;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
@@ -14,13 +14,13 @@ import static org.objectweb.asm.Opcodes.CHECKCAST;
 
  */
 
-public class CastTo extends Position implements GetDataAst {
+public class CastTo extends Position implements GetData {
 
-    private final GetDataAst value;
+    private final GetData value;
 
     private final JVM to;
 
-    public CastTo(GetDataAst value, JVM to, Position position) throws AstException {
+    public CastTo(GetData value, JVM to, Position position) throws AstException {
         super(position);
 
         this.value = value;

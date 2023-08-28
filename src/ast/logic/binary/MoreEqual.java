@@ -1,7 +1,7 @@
 package ast.logic.binary;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import ast.Position;
 import ast.logic.LogicBinary;
@@ -18,7 +18,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class MoreEqual extends LogicBinary {
 
-    public MoreEqual(GetDataAst left, GetDataAst right, Position position) throws AstException {
+    public MoreEqual(GetData left, GetData right, Position position) throws AstException {
         super(left, right, position);
 
         if (left.getType().isBoolean() || right.getType().isBoolean())

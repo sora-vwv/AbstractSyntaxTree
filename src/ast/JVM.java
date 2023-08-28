@@ -114,6 +114,12 @@ public class JVM {
         this.depth = depth;
     }
 
+    public JVM(JVM parent, int depth) {
+        this.value = parent.value;
+        this.type = parent.type;
+        this.depth = depth;
+    }
+
     // is и get
 
     // JVM в операциях не разделяет типы данных byte, short и int. Для неё всё - int.
@@ -173,6 +179,43 @@ public class JVM {
         return depth != 0;
     }
 
+    // отдельно для массивов
+    public boolean isArrayIntJVM() {
+        return isArray() && (type == Type.CHAR || type == Type.BYTE || type == Type.SHORT || type == Type.INT);
+    }
+
+    public boolean isArrayBoolean() {
+        return type == Type.BOOLEAN && isArray();
+    }
+
+    public boolean isArrayChar() {
+        return type == Type.CHAR && isArray();
+    }
+
+    public boolean isArrayByte() {
+        return type == Type.BYTE && isArray();
+    }
+
+    public boolean isArrayShort() {
+        return type == Type.SHORT && isArray();
+    }
+
+    public boolean isArrayLong() {
+        return type == Type.LONG && isArray();
+    }
+
+    public boolean isArrayFloat() {
+        return type == Type.FLOAT && isArray();
+    }
+
+    public boolean isArrayDouble() {
+        return type == Type.DOUBLE && isArray();
+    }
+
+    public boolean isArrayReference() {
+        return type == Type.REFERENCE && isArray();
+    }
+
     public int getDepth() {
         return depth;
     }
@@ -183,7 +226,7 @@ public class JVM {
             return 'L' + value + ';';
 
         if (isArray()) {
-            if (isReference())
+            if (type == Type.REFERENCE)
                 return "[".repeat(depth) + 'L' + value + ';';
             else
                 return "[".repeat(depth) + value;

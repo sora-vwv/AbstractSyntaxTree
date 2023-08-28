@@ -1,7 +1,7 @@
 package ast.bitwise.binary;
 
 import ast.AstException;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import ast.Position;
 import ast.bitwise.BitwiseBinary;
@@ -17,7 +17,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Xor extends BitwiseBinary {
 
-    public Xor(GetDataAst left, GetDataAst right, Position position) throws AstException {
+    public Xor(GetData left, GetData right, Position position) throws AstException {
         super(left, right, position);
     }
 

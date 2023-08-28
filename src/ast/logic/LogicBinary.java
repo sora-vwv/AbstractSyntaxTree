@@ -2,7 +2,7 @@ package ast.logic;
 
 import ast.AstException;
 import ast.Position;
-import ast.GetDataAst;
+import ast.GetData;
 import ast.JVM;
 import org.objectweb.asm.MethodVisitor;
 
@@ -12,12 +12,12 @@ import org.objectweb.asm.MethodVisitor;
 
  */
 
-public abstract class LogicBinary extends Position implements GetDataAst {
+public abstract class LogicBinary extends Position implements GetData {
 
-    private final GetDataAst left;
-    private final GetDataAst right;
+    private final GetData left;
+    private final GetData right;
 
-    protected LogicBinary(GetDataAst left, GetDataAst right, Position position) throws AstException {
+    protected LogicBinary(GetData left, GetData right, Position position) throws AstException {
         super(position);
 
         this.left = left;
@@ -64,7 +64,7 @@ public abstract class LogicBinary extends Position implements GetDataAst {
         this.codegen(mv, right);
     }
 
-    private void codegen(MethodVisitor mv, GetDataAst value) throws AstException {
+    private void codegen(MethodVisitor mv, GetData value) throws AstException {
         JVM priority = getPriorityType();
 
         value.codegen(mv);
