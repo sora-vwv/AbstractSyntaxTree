@@ -9,9 +9,6 @@ import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.*;
 
 /*
-
-@author Sora
-
 Унарный минус
  */
 

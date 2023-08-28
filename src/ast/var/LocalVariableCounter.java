@@ -7,9 +7,7 @@ import java.util.ArrayList;
 public class LocalVariableCounter {
 
     private int current_id;
-
     private final LocalVariableCounter parent;
-
     private final ArrayList<Variable> vars = new ArrayList<>();
 
     public LocalVariableCounter(LocalVariableCounter parent) {

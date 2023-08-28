@@ -1,9 +1,8 @@
 package ast;
 
+import java.util.Objects;
+
 /*
-
-@author Sora
-
 В Java Virtual Machine (JVM) типы данных записываются иными способами. Для этого
 необходимо создать класс, который будет конвертировать привычные нам типы данных
 в типы данных JVM. Обозначения:
@@ -200,6 +199,10 @@ public class JVM {
         return type == Type.SHORT && isArray();
     }
 
+    public boolean isArrayInt() {
+        return type == Type.INT && isArray();
+    }
+
     public boolean isArrayLong() {
         return type == Type.LONG && isArray();
     }
@@ -245,4 +248,9 @@ public class JVM {
         return value;
     }
 
+    public boolean equals(JVM o) {
+        return (this.type == o.type || (this.isIntJVM() && o.isIntJVM()) || (this.isArrayIntJVM() && this.isArrayIntJVM())) &&
+                this.depth == o.depth &&
+                Objects.equals(this.value, o.value);
+    }
 }

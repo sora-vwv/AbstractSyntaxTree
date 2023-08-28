@@ -8,12 +8,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.CHECKCAST;
 
-/*
-
-@author Sora
-
- */
-
 public class CastTo extends Position implements GetData {
 
     private final GetData value;

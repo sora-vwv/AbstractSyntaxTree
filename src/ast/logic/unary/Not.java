@@ -9,12 +9,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
- */
-
 public class Not extends LogicUnary {
 
     public Not(GetData value, Position position) throws AstException {

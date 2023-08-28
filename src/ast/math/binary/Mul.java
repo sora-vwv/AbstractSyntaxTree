@@ -8,12 +8,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
-*/
-
 public class Mul extends MathBinary {
 
     public Mul(GetData left, GetData right, Position position) throws AstException {

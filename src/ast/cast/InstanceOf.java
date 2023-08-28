@@ -8,12 +8,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.INSTANCEOF;
 
-/*
-
-@author Sora
-
- */
-
 public class InstanceOf extends Position implements GetData {
 
     private final GetData left;

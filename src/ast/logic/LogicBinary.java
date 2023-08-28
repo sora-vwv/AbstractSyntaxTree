@@ -6,12 +6,6 @@ import ast.GetData;
 import ast.JVM;
 import org.objectweb.asm.MethodVisitor;
 
-/*
-
-@author Sora
-
- */
-
 public abstract class LogicBinary extends Position implements GetData {
 
     private final GetData left;

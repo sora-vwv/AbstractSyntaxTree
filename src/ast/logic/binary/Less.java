@@ -10,12 +10,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
- */
-
 public class Less extends LogicBinary {
 
     public Less(GetData left, GetData right, Position position) throws AstException {

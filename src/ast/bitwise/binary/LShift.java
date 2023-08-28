@@ -10,12 +10,6 @@ import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.ISHL;
 import static org.objectweb.asm.Opcodes.LSHL;
 
-/*
-
-@author Sora
-
- */
-
 public class LShift extends BitwiseBinary {
 
     public LShift(GetData left, GetData right, Position position) throws AstException {

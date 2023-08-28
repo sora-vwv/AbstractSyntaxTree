@@ -7,9 +7,6 @@ import ast.GetData;
 import org.objectweb.asm.MethodVisitor;
 
 /*
-
-@author Sora
-
 Унарные математические операции.
 Здесь нет никаких преобразований в иные типы данных.
 */

@@ -6,12 +6,6 @@ import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
 
-/*
-
-@author Sora
-
-*/
-
 public abstract class BitwiseBinary extends Position implements GetData {
 
     protected final GetData left;

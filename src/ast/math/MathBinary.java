@@ -7,9 +7,6 @@ import ast.JVM;
 import org.objectweb.asm.MethodVisitor;
 
 /*
-
-@author Sora
-
 Бинарные математические операции.
  */
 

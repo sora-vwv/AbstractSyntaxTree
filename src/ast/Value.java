@@ -5,12 +5,6 @@ import org.objectweb.asm.Opcodes;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
- */
-
 public class Value implements GetData {
 
     private boolean value_boolean;

@@ -5,9 +5,6 @@ import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.*;
 
 /*
-
-@author Sora
-
 Интерфейс для узлов дерева, которые оставляют в стеке значений JVM какое-либо
 значение: от математически операций до вызова методов и создания новых reference.
 
@@ -16,7 +13,7 @@ Opcodes.I2D из библиотеки можно расшифровать как
 Последнее на стеке значений число int преобразуется в double
  */
 
-public interface GetData {
+public interface GetData extends AstNode {
 
     // метод, который генерирует байт-код JVM
     void codegen(MethodVisitor mv) throws AstException;

@@ -8,12 +8,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
-*/
-
 public class Add extends MathBinary {
 
     // конструктор должен быть публичным

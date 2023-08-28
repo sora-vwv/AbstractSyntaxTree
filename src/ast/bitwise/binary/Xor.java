@@ -9,12 +9,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
- */
-
 public class Xor extends BitwiseBinary {
 
     public Xor(GetData left, GetData right, Position position) throws AstException {

@@ -10,12 +10,6 @@ import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-/*
-
-@author Sora
-
- */
-
 public class MoreEqual extends LogicBinary {
 
     public MoreEqual(GetData left, GetData right, Position position) throws AstException {
