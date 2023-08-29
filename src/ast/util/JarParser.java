@@ -18,6 +18,8 @@ import java.util.jar.JarInputStream;
 
 import static java.lang.reflect.Modifier.*;
 
+// !!!!!!! Этот файл не трогай. Код здесь не очень
+
 public class JarParser {
 
     public ArrayList<String> getClassNamesFromJar(String jarPath) throws Exception {
