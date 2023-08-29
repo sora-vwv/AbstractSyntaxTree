@@ -16,7 +16,7 @@ public class LessEqual extends LogicBinary {
         super(left, right, position);
 
         if (left.getType().isBoolean() || right.getType().isBoolean())
-            throw new AstException("Бинарный логический оператор less equal не обрабатывает boolean.");
+            throw new AstException("Бинарный логический оператор less equal не обрабатывает boolean.", this);
     }
 
     @Override

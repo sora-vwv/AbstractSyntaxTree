@@ -15,7 +15,7 @@ public class And extends LogicBinary {
         super(left, right, position);
 
         if (!left.getType().isBoolean() || !right.getType().isBoolean())
-            throw new AstException("Бинарный логический оператор and принимает только boolean.");
+            throw new AstException("Бинарный логический оператор and принимает только boolean.", this);
     }
 
     @Override
