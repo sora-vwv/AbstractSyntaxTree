@@ -1,5 +1,8 @@
 package ast;
 
+import ast.compatibility.IClass;
+import ast.compatibility.IList;
+
 import java.util.Objects;
 
 /*
@@ -239,8 +242,9 @@ public class JVM {
     }
 
     public String getReference() throws AstException {
-        if (!isReference())
+        if (!isReference() && !isArrayReference())
             throw new AstException("getReference() не может быть вызван: нет reference");
+
         return value;
     }
 
@@ -248,9 +252,53 @@ public class JVM {
         return value;
     }
 
-    public boolean equals(JVM o) {
-        return (this.type == o.type || (this.isIntJVM() && o.isIntJVM()) || (this.isArrayIntJVM() && this.isArrayIntJVM())) &&
-                this.depth == o.depth &&
-                Objects.equals(this.value, o.value);
+    // можно записать короче, но так понятнее.
+    public boolean equals(JVM o) throws AstException {
+        if (depth != o.depth)
+            return false;
+
+        if ((isReference() && o.isReference()) || (isArrayReference() && o.isArrayReference())) {
+            IClass clazz = IList.get(o.getReference());
+
+            while (clazz != null) {
+                if (Objects.equals(getReference(), clazz.getType().getReference()))
+                    return true;
+
+                clazz = IList.get(clazz.getTypeSuper().getReference());
+            }
+
+            return false;
+        }
+
+        if (isIntJVM() && o.isIntJVM())
+            return true;
+
+        if (isArrayIntJVM() && o.isArrayIntJVM())
+            return true;
+
+        return Objects.equals(value, o.value);
+    }
+
+    // чем выше scale, тем хуже сравнение. До получения scale необходимо сравнить с помощью equals
+    public int getScale(JVM o) throws AstException {
+
+        if (Objects.equals(value, o.value))
+            return 0;
+
+        int scale = 0;
+
+        if ((isReference() && o.isReference()) || (isArrayReference() && o.isArrayReference())) {
+            IClass clazz = IList.get(o.getReference());
+
+            while (clazz != null) {
+                if (Objects.equals(getReference(), clazz.getType().getReference()))
+                    return scale;
+
+                clazz = IList.get(clazz.getTypeSuper().getReference());
+                scale++;
+            }
+        }
+
+        return 1;
     }
 }

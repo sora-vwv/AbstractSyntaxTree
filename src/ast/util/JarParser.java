@@ -92,9 +92,7 @@ public class JarParser {
         );
 
         for (Class<?> type: constructor.getParameterTypes())
-            iconstructor.addArgument(new IArgument(
-                    parse(type.descriptorString())
-            ));
+            iconstructor.addArgument(parse(type.descriptorString()));
 
         return iconstructor;
     }
@@ -107,9 +105,7 @@ public class JarParser {
         );
 
         for (Class<?> type: method.getParameterTypes())
-            imethod.addArgument(new IArgument(
-                    parse(type.descriptorString())
-            ));
+            imethod.addArgument(parse(type.descriptorString()));
 
         return imethod;
     }

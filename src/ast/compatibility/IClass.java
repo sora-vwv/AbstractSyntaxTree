@@ -4,6 +4,7 @@ import ast.JVM;
 import ast.Modifier;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class IClass {
 
@@ -34,10 +35,12 @@ public class IClass {
     }
 
     public void addConstructor(IConstructor constructor) {
+        constructor.parent = this;
         constructors.add(constructor);
     }
 
     public void addMethod(IMethod method) {
+        method.parent = this;
         methods.add(method);
     }
 
@@ -45,4 +48,15 @@ public class IClass {
         fields.add(field);
     }
 
+    public ArrayList<IConstructor> getConstructors() {
+        return constructors;
+    }
+
+    public ArrayList<IMethod> getMethods() {
+        return methods;
+    }
+
+    public ArrayList<IField> getFields() {
+        return fields;
+    }
 }

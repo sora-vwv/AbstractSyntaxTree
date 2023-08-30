@@ -4,7 +4,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Modifier {
 
-    enum Access {
+    public enum Access {
         PUBLIC,
         PRIVATE,
         PROTECTED,
@@ -15,23 +15,33 @@ public class Modifier {
 
     private boolean is_static;
     private boolean is_final;
+    private boolean is_abstract;
 
     public Modifier() {
         access = Access.PACKAGE_PRIVATE;
         is_static = false;
         is_final = false;
+        is_abstract = false;
     }
 
     public Modifier(Access access) {
         this.access = access;
         is_static = false;
         is_final = false;
+        is_abstract = false;
     }
 
     public Modifier(Access access, boolean is_static, boolean is_final) {
         this.access = access;
         this.is_static = is_static;
         this.is_final = is_final;
+    }
+
+    public Modifier(Access access, boolean is_static, boolean is_final, boolean is_abstract) {
+        this.access = access;
+        this.is_static = is_static;
+        this.is_final = is_final;
+        this.is_abstract = is_abstract;
     }
 
     public int codegen() {
@@ -49,6 +59,9 @@ public class Modifier {
 
         if (is_final)
             modifier += ACC_FINAL;
+
+        if (is_abstract)
+            modifier += ACC_ABSTRACT;
 
         return modifier;
     }
@@ -81,12 +94,20 @@ public class Modifier {
         return is_final;
     }
 
+    public boolean isAbstract() {
+        return is_abstract;
+    }
+
     public void setStatic(boolean is_static) {
         this.is_static = is_static;
     }
 
     public void setFinal(boolean is_final) {
         this.is_final = is_final;
+    }
+
+    public void setAbstract(boolean is_abstract) {
+        this.is_abstract = is_abstract;
     }
 
 }
