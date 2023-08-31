@@ -9,14 +9,20 @@ public class Return extends Position implements AstNode {
 
     private final GetData data;
 
-    public Return(GetData data, Position pos) {
+    public Return(GetData data, JVM necessary, Position pos) throws AstException {
         super(pos);
+
+        if (!necessary.equals(data.getType()))
+            throw new AstException("Тип значения для return не подходит.", this);
         this.data = data;
     }
 
-    public Return(Position pos) {
+    public Return(JVM necessary, Position pos) throws AstException {
         super(pos);
-        this.data = null;
+
+        if (!necessary.isVoid())
+            throw new AstException("Тип значения для return не подходит.", this);
+        data = null;
     }
 
     @Override

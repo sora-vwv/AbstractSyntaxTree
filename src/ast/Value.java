@@ -5,7 +5,7 @@ import org.objectweb.asm.Opcodes;
 
 import static org.objectweb.asm.Opcodes.*;
 
-public class Value implements GetData {
+public class Value extends Position implements GetData {
 
     private boolean value_boolean;
     private int     value_int;
@@ -16,42 +16,50 @@ public class Value implements GetData {
 
     private final JVM type;
 
-    public Value(boolean value) throws AstException {
+    public Value(boolean value, Position position) throws AstException {
+        super(position);
         value_boolean = value;
         type = new JVM(JVM.Type.BOOLEAN);
     }
 
-    public Value(char value) throws AstException {
+    public Value(char value, Position position) throws AstException {
+        super(position);
         value_int = value;
         type = new JVM(JVM.Type.CHAR);
     }
 
-    public Value(int value) throws AstException {
+    public Value(int value, Position position) throws AstException {
+        super(position);
         value_int = value;
         type = new JVM(JVM.Type.INT);
     }
 
-    public Value(long value) throws AstException {
+    public Value(long value, Position position) throws AstException {
+        super(position);
         value_long = value;
         type = new JVM(JVM.Type.LONG);
     }
 
-    public Value(float value) throws AstException {
+    public Value(float value, Position position) throws AstException {
+        super(position);
         value_float = value;
         type = new JVM(JVM.Type.FLOAT);
     }
 
-    public Value(double value) throws AstException {
+    public Value(double value, Position position) throws AstException {
+        super(position);
         value_double = value;
         type = new JVM(JVM.Type.DOUBLE);
     }
 
-    public Value(String value) {
+    public Value(String value, Position position) {
+        super(position);
         value_string = value;
         type = new JVM("java/lang/String");
     }
 
-    public Value() throws AstException {
+    public Value(Position position) throws AstException {
+        super(position);
         type = new JVM(JVM.Type.VOID);
     }
 

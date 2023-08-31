@@ -13,6 +13,7 @@ Opcodes.I2D из библиотеки можно расшифровать как
 Последнее на стеке значений число int преобразуется в double
  */
 
+// need extends Position
 public interface GetData extends AstNode {
 
     // метод, который генерирует байт-код JVM
@@ -83,6 +84,12 @@ public interface GetData extends AstNode {
             else if (getType().isIntJVM())
                 mv.visitInsn(I2D);
         }
+    }
+
+    default Position getPosition() {
+        if (this instanceof Position)
+            return (Position) this;
+        return new Position(-1, -1, null, null);
     }
 
 }
