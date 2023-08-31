@@ -24,6 +24,15 @@ public class IConstructor extends IOverload {
         arguments.add(argument);
     }
 
+    public String getDescriptor() {
+        StringBuilder builder = new StringBuilder();
+        builder.append('(');
+        for (JVM argument: arguments)
+            builder.append(argument.getInternalType());
+        builder.append(")V");
+        return builder.toString();
+    }
+
     @Override
     public JVM[] getArguments() {
         return arguments.toArray(new JVM[0]);

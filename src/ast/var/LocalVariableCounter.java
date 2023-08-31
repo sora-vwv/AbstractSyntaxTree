@@ -1,6 +1,8 @@
 package ast.var;
 
 import ast.AstException;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,11 @@ public class LocalVariableCounter {
 
         var.id = current_id++;
         vars.add(var);
+    }
+
+    public void codegenVariables(MethodVisitor mv, Label label_start, Label label_end) {
+        for (Variable var: vars)
+            mv.visitLocalVariable(var.getName(), var.getType().getInternalType(), null, label_start, label_end, var.id);
     }
 
 }

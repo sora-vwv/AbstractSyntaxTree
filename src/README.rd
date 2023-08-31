@@ -1,2 +1,3 @@
-- не забыть написать axl.var.NewReference
-- не забыть переписать equals в axl.JVM для reference в связи с излишне строгой типизацией
++ axl.var.NewReference
++ переписать equals в axl.JVM для reference в связи с излишне строгой типизацией
+- ...

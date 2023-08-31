@@ -2,7 +2,7 @@ package ast;
 
 /*
 любые исключения для дебага и вывода ошибок компилятора в будующем - это AstException
- */
+*/
 
 public class AstException extends Exception {
 
