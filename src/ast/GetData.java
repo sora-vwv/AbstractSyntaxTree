@@ -12,8 +12,7 @@ import static org.objectweb.asm.Opcodes.*;
 Opcodes.I2D из библиотеки можно расшифровать как "int to double"
 Последнее на стеке значений число int преобразуется в double
  */
-
-// need extends Position
+
 public interface GetData extends AstNode {
 
     // метод, который генерирует байт-код JVM
