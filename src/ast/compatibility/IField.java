@@ -10,6 +10,8 @@ public class IField {
 
     private final Modifier modifier;
 
+    IClass parent;
+
     public IField(String name, JVM type, Modifier modifier) {
         this.name = name;
         this.type = type;
@@ -26,6 +28,10 @@ public class IField {
 
     public Modifier getModifier() {
         return modifier;
+    }
+
+    public IClass getParent() {
+        return parent;
     }
 
 }

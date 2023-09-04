@@ -1,10 +1,11 @@
 package ast.compatibility;
 
+import ast.AstException;
 import ast.JVM;
 import ast.Modifier;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Objects;
 
 public class IClass {
 
@@ -45,6 +46,7 @@ public class IClass {
     }
 
     public void addField(IField field) {
+        field.parent = this;
         fields.add(field);
     }
 
@@ -59,4 +61,27 @@ public class IClass {
     public ArrayList<IField> getFields() {
         return fields;
     }
+
+    public IField getField(String name) throws AstException {
+        IClass clazz = this;
+        while (clazz != null) {
+            for (IField field: fields)
+                if (Objects.equals(field.getName(), name) && !field.getModifier().isStatic())
+                    return field;
+            clazz = IList.get(clazz.getTypeSuper().getReference());
+        }
+        return null;
+    }
+
+    public IField getFieldStatic(String name) throws AstException {
+        IClass clazz = this;
+        while (clazz != null) {
+            for (IField field: fields)
+                if (Objects.equals(field.getName(), name) && field.getModifier().isStatic())
+                    return field;
+            clazz = IList.get(clazz.getTypeSuper().getReference());
+        }
+        return null;
+    }
+
 }
