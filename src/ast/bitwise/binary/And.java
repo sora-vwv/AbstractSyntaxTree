@@ -1,7 +1,7 @@
 package ast.bitwise.binary;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import ast.bitwise.BitwiseBinary;
@@ -11,7 +11,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class And extends BitwiseBinary {
 
-    public And(GetData left, GetData right, Position position) throws AstException {
+    public And(Expression left, Expression right, Position position) throws AstException {
         super(left, right, position);
     }
 

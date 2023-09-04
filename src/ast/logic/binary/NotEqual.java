@@ -1,7 +1,7 @@
 package ast.logic.binary;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import ast.logic.LogicBinary;
@@ -12,7 +12,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class NotEqual extends LogicBinary {
 
-    public NotEqual(GetData left, GetData right, Position position) throws AstException {
+    public NotEqual(Expression left, Expression right, Position position) throws AstException {
         super(left, right, position);
     }
 

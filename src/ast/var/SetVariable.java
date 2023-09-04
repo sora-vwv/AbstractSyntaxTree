@@ -8,9 +8,9 @@ import static org.objectweb.asm.Opcodes.*;
 public class SetVariable extends Position implements AstNode {
 
     private final Variable variable;
-    private final GetData value;
+    private final Expression value;
 
-    public SetVariable(Variable variable, GetData value, Position position) throws AstException {
+    public SetVariable(Variable variable, Expression value, Position position) throws AstException {
         super(position);
         this.variable = variable;
         this.value = value;

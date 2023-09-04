@@ -7,9 +7,9 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Return extends Position implements AstNode {
 
-    private final GetData data;
+    private final Expression data;
 
-    public Return(GetData data, JVM necessary, Position pos) throws AstException {
+    public Return(Expression data, JVM necessary, Position pos) throws AstException {
         super(pos);
 
         if (!necessary.equals(data.getType()))

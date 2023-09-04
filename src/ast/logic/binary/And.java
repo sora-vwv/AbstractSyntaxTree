@@ -1,7 +1,7 @@
 package ast.logic.binary;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.Position;
 import ast.logic.LogicBinary;
 import org.objectweb.asm.Label;
@@ -11,7 +11,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class And extends LogicBinary {
 
-    public And(GetData left, GetData right, Position position) throws AstException {
+    public And(Expression left, Expression right, Position position) throws AstException {
         super(left, right, position);
 
         if (!left.getType().isBoolean() || !right.getType().isBoolean())

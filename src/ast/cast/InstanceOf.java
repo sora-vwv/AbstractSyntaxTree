@@ -1,19 +1,19 @@
 package ast.cast;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.INSTANCEOF;
 
-public class InstanceOf extends Position implements GetData {
+public class InstanceOf extends Position implements Expression {
 
-    private final GetData left;
+    private final Expression left;
     private final JVM right;
 
-    public InstanceOf(GetData left, JVM right, Position position) throws AstException {
+    public InstanceOf(Expression left, JVM right, Position position) throws AstException {
         super(position);
 
         this.left = left;

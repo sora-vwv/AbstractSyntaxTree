@@ -6,12 +6,12 @@ import org.objectweb.asm.Opcodes;
 
 import java.util.List;
 
-public class NewArray extends Position implements GetData {
+public class NewArray extends Position implements Expression {
 
-    private final List<GetData> sizes;
+    private final List<Expression> sizes;
     private final JVM type;
 
-    public NewArray(JVM type, List<GetData> sizes, Position position) throws AstException {
+    public NewArray(JVM type, List<Expression> sizes, Position position) throws AstException {
         super(position);
         this.sizes = sizes;
         this.type = type;
@@ -20,7 +20,7 @@ public class NewArray extends Position implements GetData {
         if (type.getDepth() == 0 || type.getDepth() != sizes.size())
             throw new AstException("Размер массива некорректный.", this);
 
-        for (GetData size: sizes)
+        for (Expression size: sizes)
             if(!size.getType().isIntJVM())
                 throw new AstException("Индексом массива может быть только число.", this);
     }
@@ -28,7 +28,7 @@ public class NewArray extends Position implements GetData {
     @Override
     public void codegen(MethodVisitor mv) throws AstException {
 
-        for (GetData size: sizes)
+        for (Expression size: sizes)
             size.codegen(mv);
 
         if (type.getDepth() > 1 || type.isArrayReference()) {

@@ -1,12 +1,11 @@
 package ast.util;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.compatibility.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Overload {
@@ -79,7 +78,7 @@ public class Overload {
         return (IConstructor) getOverload(constructors, comparable);
     }
 
-    public static JVM[] toArray(ArrayList<GetData> values) throws AstException {
+    public static JVM[] toArray(ArrayList<Expression> values) throws AstException {
         JVM[] types = new JVM[values.size()];
         for (int i = 0; i < values.size(); i++)
             types[i] = values.get(i).getType();

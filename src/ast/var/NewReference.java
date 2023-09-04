@@ -1,7 +1,7 @@
 package ast.var;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import ast.compatibility.IClass;
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import static ast.util.Overload.*;
 import static org.objectweb.asm.Opcodes.*;
 
-public class NewReference extends Position implements GetData {
+public class NewReference extends Position implements Expression {
 
     private final JVM classname;
     private final IConstructor constructor;
-    private final ArrayList<GetData> values;
+    private final ArrayList<Expression> values;
 
-    public NewReference(JVM classname, ArrayList<GetData> values, Position position) throws AstException {
+    public NewReference(JVM classname, ArrayList<Expression> values, Position position) throws AstException {
         super(position);
 
         if (!classname.isReference())
@@ -41,7 +41,7 @@ public class NewReference extends Position implements GetData {
     public void codegen(MethodVisitor mv) throws AstException {
         mv.visitTypeInsn(NEW, classname.getReference());
         mv.visitInsn(DUP);
-        for (GetData data: values)
+        for (Expression data: values)
             data.codegen(mv);
         mv.visitMethodInsn(INVOKESPECIAL, classname.getReference(), "<init>", constructor.getDescriptor());
     }

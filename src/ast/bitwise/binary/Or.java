@@ -1,7 +1,7 @@
 package ast.bitwise.binary;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import ast.bitwise.BitwiseBinary;
@@ -11,7 +11,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Or extends BitwiseBinary {
 
-    public Or(GetData left, GetData right, Position position) throws AstException {
+    public Or(Expression left, Expression right, Position position) throws AstException {
         super(left, right, position);
     }
 

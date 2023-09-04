@@ -1,20 +1,20 @@
 package ast.cast;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.CHECKCAST;
 
-public class CastTo extends Position implements GetData {
+public class CastTo extends Position implements Expression {
 
-    private final GetData value;
+    private final Expression value;
 
     private final JVM to;
 
-    public CastTo(GetData value, JVM to, Position position) throws AstException {
+    public CastTo(Expression value, JVM to, Position position) throws AstException {
         super(position);
 
         this.value = value;

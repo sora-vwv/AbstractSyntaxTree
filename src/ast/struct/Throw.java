@@ -8,9 +8,9 @@ import static org.objectweb.asm.Opcodes.ATHROW;
 public class Throw extends Position implements AstNode {
     private final static JVM necessary = new JVM("java.lang.Throwable");
 
-    private final GetData data;
+    private final Expression data;
 
-    public Throw(GetData data, Position pos) throws AstException {
+    public Throw(Expression data, Position pos) throws AstException {
         super(pos);
 
         if (!necessary.equals(data.getType()))

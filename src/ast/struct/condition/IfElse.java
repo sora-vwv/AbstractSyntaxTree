@@ -2,7 +2,7 @@ package ast.struct.condition;
 
 import ast.AstException;
 import ast.AstNode;
-import ast.GetData;
+import ast.Expression;
 import ast.Position;
 import ast.struct.Body;
 import org.objectweb.asm.Label;
@@ -13,11 +13,11 @@ import static org.objectweb.asm.Opcodes.IFEQ;
 
 public class IfElse extends Position implements AstNode {
 
-    private final GetData condition;
+    private final Expression condition;
     private final Body body_if;
     private final Body body_else;
 
-    public IfElse(GetData condition, Body body_if, Body body_else, Position position) throws AstException {
+    public IfElse(Expression condition, Body body_if, Body body_else, Position position) throws AstException {
         super(position);
 
         if (!condition.getType().isBoolean())

@@ -3,7 +3,7 @@ package ast.math;
 import ast.AstException;
 import ast.Position;
 import ast.JVM;
-import ast.GetData;
+import ast.Expression;
 import org.objectweb.asm.MethodVisitor;
 
 /*
@@ -11,12 +11,12 @@ import org.objectweb.asm.MethodVisitor;
 Здесь нет никаких преобразований в иные типы данных.
 */
 
-public class MathUnary extends Position implements GetData {
+public class MathUnary extends Position implements Expression {
 
     // значение, которое будет обрабатывать операция
-    private final GetData value;
+    private final Expression value;
 
-    protected MathUnary(GetData value, Position position) throws AstException {
+    protected MathUnary(Expression value, Position position) throws AstException {
         super(position);
 
         this.value = value;

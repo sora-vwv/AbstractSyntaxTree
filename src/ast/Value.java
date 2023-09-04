@@ -5,7 +5,7 @@ import org.objectweb.asm.Opcodes;
 
 import static org.objectweb.asm.Opcodes.*;
 
-public class Value extends Position implements GetData {
+public class Value extends Position implements Expression {
 
     private boolean value_boolean;
     private int     value_int;

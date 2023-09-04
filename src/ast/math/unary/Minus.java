@@ -1,7 +1,7 @@
 package ast.math.unary;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.Position;
 import ast.math.MathUnary;
 import org.objectweb.asm.MethodVisitor;
@@ -15,7 +15,7 @@ import static org.objectweb.asm.Opcodes.*;
 public class Minus extends MathUnary {
 
     // конструктор должен быть публичным
-    public Minus(GetData value, Position position) throws AstException {
+    public Minus(Expression value, Position position) throws AstException {
         super(value, position);
     }
 

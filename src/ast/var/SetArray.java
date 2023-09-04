@@ -11,10 +11,10 @@ import static org.objectweb.asm.Opcodes.AALOAD;
 public class SetArray extends Position implements AstNode {
 
     private final Variable variable;
-    private final List<GetData> indexes;
-    private final GetData value;
+    private final List<Expression> indexes;
+    private final Expression value;
 
-    public SetArray(Variable variable, List<GetData> indexes, GetData value, Position position) throws AstException {
+    public SetArray(Variable variable, List<Expression> indexes, Expression value, Position position) throws AstException {
         super(position);
 
         this.value = value;
@@ -32,7 +32,7 @@ public class SetArray extends Position implements AstNode {
         if(!getType().equals(value.getType()))
             throw new AstException("Несовпадение типов.", this);
 
-        for (GetData index: indexes)
+        for (Expression index: indexes)
             if(!index.getType().isIntJVM())
                 throw new AstException("Индексом массива может быть только число.", this);
     }
@@ -44,7 +44,7 @@ public class SetArray extends Position implements AstNode {
         int temp = indexes.size();
         JVM type = getType();
 
-        for (GetData index: indexes) {
+        for (Expression index: indexes) {
             index.codegen(mv);
 
             if(temp == 1) {

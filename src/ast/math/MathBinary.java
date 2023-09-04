@@ -2,7 +2,7 @@ package ast.math;
 
 import ast.AstException;
 import ast.Position;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import org.objectweb.asm.MethodVisitor;
 
@@ -10,13 +10,13 @@ import org.objectweb.asm.MethodVisitor;
 Бинарные математические операции.
  */
 
-public class MathBinary extends Position implements GetData {
+public class MathBinary extends Position implements Expression {
 
     // значения, которые будет обрабатывать операция
-    private final GetData left;
-    private final GetData right;
+    private final Expression left;
+    private final Expression right;
 
-    protected MathBinary(GetData left, GetData right, Position position) throws AstException {
+    protected MathBinary(Expression left, Expression right, Position position) throws AstException {
         super(position);
 
         this.left = left;

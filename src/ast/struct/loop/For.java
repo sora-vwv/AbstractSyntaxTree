@@ -2,7 +2,7 @@ package ast.struct.loop;
 
 import ast.AstException;
 import ast.AstNode;
-import ast.GetData;
+import ast.Expression;
 import ast.struct.Body;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
@@ -15,13 +15,13 @@ public class For implements AstNode {
     private final Body body;
 
     private final AstNode struct_first;
-    private final GetData condition;
+    private final Expression condition;
     private final AstNode struct_second;
 
     private final Label point_start = new Label();
     private final Label point_end = new Label();
 
-    public For(AstNode struct_first, GetData condition, AstNode struct_second, Body body) throws AstException {
+    public For(AstNode struct_first, Expression condition, AstNode struct_second, Body body) throws AstException {
         this.struct_first = struct_first;
         if (!condition.getType().isBoolean())
             throw new AstException("Условием for может быть только boolean значение", condition.getPosition());

@@ -2,7 +2,7 @@ package ast.struct.loop;
 
 import ast.AstException;
 import ast.AstNode;
-import ast.GetData;
+import ast.Expression;
 import ast.struct.Body;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
@@ -13,12 +13,12 @@ import static org.objectweb.asm.Opcodes.IFEQ;
 public class While implements AstNode {
 
     private final Body body;
-    private final GetData condition;
+    private final Expression condition;
 
     private final Label point_start = new Label();
     private final Label point_end = new Label();
 
-    public While(GetData condition, Body body) throws AstException {
+    public While(Expression condition, Body body) throws AstException {
         this.condition = condition;
         if (!condition.getType().isBoolean())
             throw new AstException("Условием while может быть только boolean значение", condition.getPosition());

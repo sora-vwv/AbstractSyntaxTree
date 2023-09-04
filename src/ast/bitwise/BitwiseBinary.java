@@ -1,17 +1,17 @@
 package ast.bitwise;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
 
-public abstract class BitwiseBinary extends Position implements GetData {
+public abstract class BitwiseBinary extends Position implements Expression {
 
-    protected final GetData left;
-    protected final GetData right;
+    protected final Expression left;
+    protected final Expression right;
 
-    protected BitwiseBinary(GetData left, GetData right, Position position) throws AstException {
+    protected BitwiseBinary(Expression left, Expression right, Position position) throws AstException {
         super(position);
 
         this.left = left;

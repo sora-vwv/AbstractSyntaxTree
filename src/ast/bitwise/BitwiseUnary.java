@@ -1,16 +1,16 @@
 package ast.bitwise;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
 
-public class BitwiseUnary extends Position implements GetData {
+public class BitwiseUnary extends Position implements Expression {
 
-    private final GetData value;
+    private final Expression value;
 
-    protected BitwiseUnary(GetData value, Position position) throws AstException {
+    protected BitwiseUnary(Expression value, Position position) throws AstException {
         super(position);
 
         this.value = value;

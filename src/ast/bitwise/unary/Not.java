@@ -1,7 +1,7 @@
 package ast.bitwise.unary;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.Position;
 import ast.bitwise.BitwiseUnary;
 import org.objectweb.asm.MethodVisitor;
@@ -10,7 +10,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Not extends BitwiseUnary {
 
-    public Not(GetData value, Position position) throws AstException {
+    public Not(Expression value, Position position) throws AstException {
         super(value, position);
     }
 

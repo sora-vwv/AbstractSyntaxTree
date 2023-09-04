@@ -2,7 +2,7 @@ package ast.struct;
 
 import ast.AstException;
 import ast.AstNode;
-import ast.GetData;
+import ast.Expression;
 import ast.var.LocalVariableCounter;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
@@ -56,8 +56,8 @@ public class Body implements AstNode {
             }
 
             struct.codegen(mv);
-            if (struct instanceof GetData)
-                if (!((GetData) struct).getType().isVoid())
+            if (struct instanceof Expression)
+                if (!((Expression) struct).getType().isVoid())
                     mv.visitInsn(POP);
             struct.codegenEnd(mv);
         }

@@ -1,14 +1,14 @@
 package ast.var;
 
 import ast.AstException;
-import ast.GetData;
+import ast.Expression;
 import ast.JVM;
 import ast.Position;
 import org.objectweb.asm.MethodVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
-public class GetVariable extends Position implements GetData {
+public class GetVariable extends Position implements Expression {
 
     private final Variable variable;
 
