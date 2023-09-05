@@ -24,7 +24,10 @@ public class Method {
     final ArrayList<Variable> arguments;
     final ArrayList<String> throwable;
 
-    public Method(String name, JVM type, Modifier modifier) {
+    private final Variable this_variable;
+
+    public Method(String name, JVM type, Modifier modifier, Class clazz) {
+        this_variable = new Variable("this", clazz.classname, new Position(-1, -1, null, null));
         this.name = name;
         this.type = type;
 
@@ -36,6 +39,11 @@ public class Method {
     }
 
     void codegen(Class clazz) throws AstException {
+        if (!modifier.isStatic())
+            body.getCounter().add(this_variable);
+        for (Variable variable: arguments)
+            body.getCounter().add(variable);
+
         MethodVisitor mv = clazz.cw.visitMethod(modifier.codegen(), name, Overload.getDescriptor(arguments, new JVM(JVM.Type.VOID)), null, throwable.toArray(new String[0]));
         body.codegen(mv);
         if (type.isVoid() && !body.isLastReturn())
@@ -50,9 +58,8 @@ public class Method {
         throwable.add(type.getReference());
     }
 
-    public void addArgument(Variable variable) throws AstException {
+    public void addArgument(Variable variable) {
         arguments.add(variable);
-        body.getCounter().add(variable);
     }
 
     public Body getBody() {
