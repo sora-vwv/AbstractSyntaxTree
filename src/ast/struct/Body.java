@@ -18,7 +18,7 @@ public class Body implements Statement {
 
     ArrayList<Statement> structs = new ArrayList<>();
 
-    Body() {
+    public Body() {
         this.counter = new LocalVariableCounter();
         this.data = new BodyData();
     }
@@ -29,7 +29,9 @@ public class Body implements Statement {
     }
 
     public Body createChildBody() {
-        return new Body(this);
+        Body body = new Body(this);
+        this.add(body);
+        return body;
     }
 
     public void add(Statement struct) {
@@ -83,6 +85,16 @@ public class Body implements Statement {
 
     public void pushContinue(Label value) {
         data.points_continue.push(value);
+    }
+
+    public boolean isLastReturn() {
+        if (structs.size() == 0)
+            return false;
+
+        Statement statement = structs.get(structs.size()-1);
+        if (statement instanceof Body)
+            return ((Body) statement).isLastReturn();
+        return statement instanceof Return;
     }
 
 }

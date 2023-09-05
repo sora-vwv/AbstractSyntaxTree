@@ -4,6 +4,7 @@ import ast.AstException;
 import ast.Expression;
 import ast.JVM;
 import ast.compatibility.*;
+import ast.var.Variable;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -83,6 +84,18 @@ public class Overload {
         for (int i = 0; i < values.size(); i++)
             types[i] = values.get(i).getType();
         return types;
+    }
+
+
+
+    public static String getDescriptor(ArrayList<Variable> variables, JVM type) {
+        StringBuilder builder = new StringBuilder();
+        builder.append('(');
+        for (Variable variable: variables)
+            builder.append(variable.getType().getInternalType());
+        builder.append(')');
+        builder.append(type.getInternalType());
+        return builder.toString();
     }
 
 }

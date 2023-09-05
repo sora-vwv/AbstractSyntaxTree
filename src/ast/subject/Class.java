@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Class {
 
-    private final JVM classname;
+    final JVM classname;
     private final JVM classname_super;
     private final Modifier modifier;
 
@@ -18,7 +18,6 @@ public class Class {
     private final ArrayList<Field> fields = new ArrayList<>();
 
     ClassWriter cw;
-    Constructor init;
 
     public Class(String classname, String classname_super, Modifier modifier) {
         this.classname = new JVM(classname);
@@ -29,12 +28,12 @@ public class Class {
     public byte[] codegen() throws AstException {
         this.cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
         cw.visit(49, modifier.codegen(), classname.getReference(), null, classname_super.getReference(), null);
+//        cw.visitSource("FileName.java", null);
 
         for(Method method: methods)
             method.codegen(this);
         for(Constructor constructor: constructors)
-            constructor.codegen(this);
-
+            constructor.codegen(fields);
         for(Field field: fields)
             field.codegen(this);
 
