@@ -2,27 +2,14 @@ package ast;
 
 import org.objectweb.asm.MethodVisitor;
 
-import static org.objectweb.asm.Opcodes.*;
-
-/*
-Интерфейс для узлов дерева, которые оставляют в стеке значений JVM какое-либо
-значение: от математически операций до вызова методов и создания новых reference.
-
-Преобразование типов данных:
-Opcodes.I2D из библиотеки можно расшифровать как "int to double"
-Последнее на стеке значений число int преобразуется в double
- */
+import static org.objectweb.asm.Opcodes.*;
 
 // need extends Position
 public interface Expression extends Statement {
 
-    // метод, который генерирует байт-код JVM
     void codegen(MethodVisitor mv) throws AstException;
 
-    // нужно иметь возможность получения типа значения, которое мы оставляем в стеке
     JVM getType() throws AstException;
-
-    // преобразование в разные типы данных
 
     default void toChar(MethodVisitor mv) throws AstException {
         toInt(mv);
