@@ -1,12 +1,7 @@
-package ast;
-
-/*
-любые исключения для дебага и вывода ошибок компилятора в будующем - это AstException
-*/
+package ast;
 
 public class AstException extends Exception {
 
-    // координаты в тексте, на которых возникла ошибка
     public final Position position;
 
     public AstException(String message) {
