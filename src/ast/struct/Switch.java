@@ -8,6 +8,8 @@ import org.objectweb.asm.MethodVisitor;
 
 import java.util.ArrayList;
 
+// позже переделать
+
 public class Switch implements Statement {
 
     private final ArrayList<Body> bodies;
