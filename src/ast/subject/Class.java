@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Class {
 
     final JVM classname;
-    private final JVM classname_super;
+    final JVM classname_super;
     private final Modifier modifier;
 
     private final ArrayList<Constructor> constructors = new ArrayList<>();
