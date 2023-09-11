@@ -257,7 +257,7 @@ public class JVM {
         if (depth != o.depth)
             return false;
 
-        if ((isReference() && o.isReference()) || (isArrayReference() && o.isArrayReference())) {
+        if ((isReference() && o.isReference()) || (isArrayReference() && o.isArrayReference()) || (isReference() && o.isVoid()) {
             IClass clazz = IList.get(o.getReference());
 
             while (clazz != null) {
