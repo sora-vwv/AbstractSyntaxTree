@@ -261,7 +261,7 @@ public class JVM {
             IClass clazz = IList.get(o.getReference());
 
             while (clazz != null) {
-                if (Objects.equals(getReference(), clazz.getType().getReference()))
+                if (Objects.equals(getReference(), clazz.getType().getReference()) || o.isVoid())
                     return true;
 
                 clazz = IList.get(clazz.getTypeSuper().getReference());
