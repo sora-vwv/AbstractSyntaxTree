@@ -1,2 +1,2 @@
-# AbstractSyntaxTree
-Abstract Syntax Tree for Java Virtual Machine. Developed for the Axolotl (JVM) and Lazurite programming languages
+# Абстрактное Синтаксическое Дерево
+Абстрактное Синтаксическое Дерево для виртуально машины Java (JVM). Разработано для языков программирования Axolotl (JVM) и Lazurite.
